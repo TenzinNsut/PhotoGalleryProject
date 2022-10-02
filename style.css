@@ -1,0 +1,276 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* color variables */
+:root{
+    --primary: #8c38ff;
+    --light:#eeeeee;
+    --dark: #212121;
+    --blue: #0082CC;
+}
+
+
+
+/* Navigation Bar */
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: rgb(51, 53, 53); */
+    background-color: var(--dark);
+    color: white;
+
+    border-bottom: 5px solid var(--blue);
+}
+
+.brand{
+    font-size: 2.3rem;
+    margin: 0.5rem;
+}
+
+.navbar-links ul{
+    display: flex;
+    margin: 0; /*fixing margin and padding between each ul item*/
+    padding: 0;
+}
+
+.navbar-links li a{
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    display: block; /* creates a block*/
+}
+
+.navbar-links li{
+    list-style-type: none;
+}
+
+.navbar-links li a:hover{
+    background-color: rgb(123, 122, 122);
+}
+
+
+.toggle-button{
+    /* position item to the  top left of the screen */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+   display: none; /*to only show on mobile screen*/
+   flex-direction: column; /*spans are in column*/
+   justify-content: space-between;/*add space between each span*/
+
+
+   width: 30px; 
+   height: 21px;
+}
+
+.toggle-button .bar{
+    height: 3px; /*height of actual span  bar*/
+    width: 100%;
+
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+
+@media (max-width:600px) {
+    .toggle-button{
+        display: flex; /*display button*/
+    }
+    .navbar-links{
+     /*hide navlinks*/ 
+     display: none;  
+        width: 100%; /*aligining the text to center*/
+    }
+
+
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+    .navbar-links ul{
+        flex-direction: column;
+        width: 100%; /*aligining text to center and eaiser to click*/
+    }
+
+    .navbar-links li{
+        text-align: center;
+    }
+    .navbar-links li a{
+        margin-top: 3rem;
+        padding: 2rem 1rem ;
+    }
+
+
+    /* onlclick make it active */
+    .navbar-links.active{
+        display: flex;
+    }  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Gallery */
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-auto-flow: dense;
+    height: 100vh;
+
+    justify-content: center;
+    align-content: center;
+
+    grid-gap: 16px;
+
+    margin: 200px 200px;
+}
+
+.grid-item .image{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.grid-item img{
+   width: 100%;
+   height: 100%;
+
+   object-fit: cover;
+   object-position:center;
+
+   cursor: pointer;
+   
+   transition: 0.5s ease-in-out;
+}
+
+.grid-item:hover .image img{
+    transform: scale(1.5);
+}
+
+
+.item-1 {
+    grid-column: span 2;
+}
+
+.item-3 {
+    grid-row: span 2;
+}
+
+.item-7 {
+    grid-row: span 2;
+}
+
+.item-8{
+    grid-column: span 2;
+}
+
+
+@media (max-width:600px) {
+    .grid-container{
+        grid-template-columns: repeat(1,1fr);
+        all: unset;
+    }
+    .grid-item {
+        grid-row-gap: 20px ;    
+    }
+    .grid-item:hover .image img{
+        transform: unset;
+    }
+    .grid-item img{
+        pointer-events: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* LIGHTBOX */
+
+#lightbox{
+    /* postion the item no matter where we are in the page */
+    position: fixed;
+    z-index: 100;/*always on top*/
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+}
+
+#lightbox.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+/* FOOTER */
+
+
+.main-footer{
+
+    background-color: var(--dark);
+    border-top: 5px solid var(--blue);
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.sub-footer{
+    margin: 70px;
+    
+}
+
+.main-footer a{
+    text-decoration: none;
+    color: white;
+}
+.main-footer a:hover{
+    color: var(--blue);
+}
+
+.sub-footer div{
+    margin: 10px 0;
+}
+.main-footer .head-text{
+    color: white;
+    font-weight: 800;
+    font-size: 1.1rem;
+    border-bottom: 2px dotted white;
+}
+
+@media (max-width:600px) {
+    .main-footer{
+        display: block;
+        margin-bottom:-100px;
+    }
+}
